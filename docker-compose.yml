@@ -1,0 +1,18 @@
+version: '2'
+services:
+    jenkins:
+        image: pschatzmann/jenkins
+        container_name: jenkins
+        ports:
+            - "8000:8080"
+            - "50000"
+        volumes:
+            - /srv/jenkins:/var/jenkins_home
+            - /backup:/backup 
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        dns: 8.8.8.8
+        extra_hosts:
+            - nuc.local:10.0.1.20 
+
+
